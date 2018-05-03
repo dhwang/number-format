@@ -112,7 +112,7 @@
     return NumberFormat._getInstance(objLocale, ".percent");
   };
 
-  /** @private @jsxobf-clobber */
+  
   NumberFormat._getInstance = function(objLocale, type) {
     var props = NumberFormat._getProps(objLocale);
     var cacheKey = "format.number" + type + "._instance";
@@ -126,29 +126,18 @@
     return instance;
   };
   
-  /** @private @jsxobf-clobber */
+  
   NumberFormat_prototype.grouping = 0;
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.posprefix = "";
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.possuffix = "";
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.negprefix = null;
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.negsuffix = null;
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.showdec = false;
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.maxintdigit = Number.MAX_VALUE;
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.minintdigit = 0;  
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.maxdecdigit = 0;  
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.mindecdigit = 0;
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.multiplier = 1;  
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype.currency = false;  
   
   /**
@@ -158,9 +147,7 @@
    * @throws {jsx3.Exception} if <code>strFormat</code> cannot be parsed.
    */
   NumberFormat_prototype.init = function(strFormat, objLocale) {
-    /* @jsxobf-clobber */
     this._format = strFormat;
-    /* @jsxobf-clobber */
     this._locale = objLocale || jsx3.System.getLocale();
     this._initFormat();
   };
@@ -190,7 +177,7 @@
     if (isNaN(number)) {
       return props.get('number.NaN');
     } else {
-      if (typeof(number) != "number")
+      if (typeof(number) !== "number")
         number = Number(number);
 
       var pos = number >= 0;
@@ -243,7 +230,6 @@
     }
   };
 
-  /** @private @jsxobf-clobber */
   NumberFormat._FMT = /\-?(\d+(\.\d*)?|\d*\.\d+)([eE]\-?\d+)?/;
 
   /**
@@ -352,13 +338,11 @@
     return (neg ? -1 : 1) * Number(RegExp.lastMatch) / multi;
   };
 
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype._getGrouping = function(bCur) {
     var props = this._getProps();
     return (bCur && props.get('number.currency.grouping')) || props.get('number.grouping') || "";
   };
 
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype._getDecimal = function(bCur) {
     var props = this._getProps();
     return bCur ?
@@ -366,12 +350,10 @@
         props.get('number.decimal');
   };
 
-  /** @private @jsxobf-clobber */
+
   NumberFormat._zeroCode = "0".charCodeAt(0);
-  /** @private @jsxobf-clobber */
   NumberFormat._digitCode = ".".charCodeAt(0);
 
-  /** @private @jsxobf-clobber */
   NumberFormat._numToDigitArray = function(number) {
     if (number < 0) throw new jsx3.Exception();
     var log = Math.log(number) * jsx3.LOG10E;
@@ -423,7 +405,6 @@
     return [digits, decimal];
   };
   
-  /** @private @jsxobf-clobber */
   NumberFormat._constrainDigitArray = function(digits, max, min, front) {
     if (digits.length > max) {
       if (front) {
@@ -438,7 +419,6 @@
     }
   };
   
-  /** @private @jsxobf-clobber */
   NumberFormat._roundDigits = function(digits, remainder) {
     if (remainder[0] >= 5) {
       for (var i = digits.length - 1; i >= 0; i--) {
@@ -459,17 +439,14 @@
     return false;
   };
 
-  /** @private @jsxobf-clobber */
   NumberFormat._localizeDigits = function(digits, zero) {
     var locZeroCode = zero.charCodeAt(0);
     for (var i = 0; i < digits.length; i++)
       digits[i] = String.fromCharCode(digits[i] + locZeroCode);
   };
   
-  /** @private @jsxobf-clobber */
   NumberFormat.NUMBER_PART_CHARS = "0#,.";
           
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype._initFormat = function() {
     var squote = "'";
     
@@ -586,7 +563,6 @@
     this._parseNumberPart(format.substring(numberPartIndex1, numberPartIndex2));
   };
 
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype._parseNumberPart = function(numberPart) {
     var decimalIndex = numberPart.indexOf(".");
     if (decimalIndex < 0) decimalIndex = numberPart.length;
@@ -615,7 +591,6 @@
     }
   };
 
-  /** @private @jsxobf-clobber */
   NumberFormat._getProps = function(l) {
     return jsx3.System.getLocaleProperties(l);
   };
@@ -632,7 +607,6 @@
     return a.join("");
   };
   
-  /** @private @jsxobf-clobber */
   NumberFormat_prototype._preSufChar = function(chr, props) {
     if (chr == "\u00A4") {
       this.currency = true;
