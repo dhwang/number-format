@@ -631,4 +631,5 @@
     return this._format;
   };
   
+  return NumberFormat;
 })();
