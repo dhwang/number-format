@@ -631,5 +631,7 @@
     return this._format;
   };
   
+  window.NumberFormat = NumberFormat;
+  
   return NumberFormat;
 })();
