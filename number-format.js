@@ -125,7 +125,7 @@
     }
     return instance;
   };
-  
+  var NumberFormat_prototype = NumberFormat.prototype;
   
   NumberFormat_prototype.grouping = 0;
   NumberFormat_prototype.posprefix = "";
